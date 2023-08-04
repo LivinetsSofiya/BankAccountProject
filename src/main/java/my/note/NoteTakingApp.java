@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import java.io.*;
 
 public class NoteTakingApp extends JFrame {
-    private JTextArea textArea;
+    JTextArea textArea;
     private JButton saveButton;
     private JButton loadButton;
 
@@ -24,6 +24,7 @@ public class NoteTakingApp extends JFrame {
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String filePath = new String();
                 saveNote();
             }
         });
@@ -32,6 +33,7 @@ public class NoteTakingApp extends JFrame {
         loadButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String filePath = new String();
                 loadNote();
             }
         });
@@ -45,7 +47,7 @@ public class NoteTakingApp extends JFrame {
         add(buttonPanel, BorderLayout.SOUTH);
     }
 
-    private void saveNote() {
+    void saveNote() {
         String note = textArea.getText();
         JFileChooser fileChooser = new JFileChooser();
         int result = fileChooser.showSaveDialog(this);
@@ -69,7 +71,7 @@ public class NoteTakingApp extends JFrame {
         }
     }
 
-    private void loadNote() {
+    void loadNote() {
         JFileChooser fileChooser = new JFileChooser();
         int result = fileChooser.showOpenDialog(this);
         if (result == JFileChooser.APPROVE_OPTION) {
